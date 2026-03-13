@@ -1,39 +1,78 @@
 import { useState, useEffect } from "react";
+import { FaDumbbell, FaRunning, FaSpa, FaFire } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaInstagram, FaWhatsapp, FaLinkedin, FaApple, FaGooglePlay } from "react-icons/fa";
+
 
 function HeroBanner() {
   return (
-    <section className="min-h-screen bg-linear-to-r from-black via-gray-900 to-black text-white flex items-center justify-center px-6">
-      <div className="text-center max-w-3xl">
-        <h1 className="text-6xl font-bold mb-6 tracking-wide">
-          Build Your Strongest Self
+    <section className="min-h-screen bg-linear-to-br from-black via-gray-900 to-red-950 text-white flex items-center justify-center px-6 relative overflow-hidden">
+
+      {/* Background decorative rings */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-220 h-220 rounded-full border border-red-400 opacity-20"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-170 h-170 rounded-full border border-red-400 opacity-15"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-120 h-120 rounded-full border border-red-400 opacity-10"></div>
+      </div>
+
+      <div className="text-center max-w-3xl relative z-10">
+        <span className="inline-block text-red-400 text-sm font-semibold tracking-widest uppercase mb-4 border border-red-800 px-4 py-1 rounded-full">
+          No Pain, No Gain
+        </span>
+
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-wide leading-tight">
+          Build Your <span className="text-red-500">Strongest</span> Self
         </h1>
 
-        <p className="text-gray-300 mb-8 text-lg">
+        <p className="text-gray-300 mb-10 text-lg max-w-xl mx-auto">
           Discipline, dedication and consistency create unstoppable strength.
           Your fitness journey begins with a single powerful step.
         </p>
 
-        <div className="flex justify-center gap-6">
-          <button className="bg-red-500 px-8 py-3 rounded-lg hover:bg-red-600 transition">
-            Start Journey
-          </button>
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
 
-          <button className="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition">
-            Explore
-          </button>
+          <Link
+            to="/Contact"
+            className="bg-red-500 px-10 py-3 rounded-lg hover:bg-red-600 transition font-semibold text-lg shadow-lg shadow-red-900/40 text-center"
+          >
+            Start Journey
+          </Link>
+
+          <Link
+            to="/programs"
+            className="border border-white/40 px-10 py-3 rounded-lg hover:bg-white hover:text-black transition font-semibold text-lg backdrop-blur-sm text-center"
+          >
+            Explore Programs
+          </Link>
+
+        </div>
+
+        {/* Hero quick stats */}
+        <div className="mt-16 grid grid-cols-3 gap-6 max-w-md mx-auto border-t border-white/10 pt-8">
+          {[
+            { val: "1000+", label: "Members" },
+            { val: "50+", label: "Trainers" },
+            { val: "24/7", label: "Access" },
+          ].map((s, i) => (
+            <div key={i} className="text-center">
+              <p className="text-2xl font-bold text-red-400">{s.val}</p>
+              <p className="text-gray-400 text-sm">{s.label}</p>
+            </div>
+          ))}
         </div>
       </div>
+
     </section>
   );
 }
 
 function StatsPanel() {
   const stats = [
-    { number: 1000, suffix: "+", label: "Active Members" },
-    { number: 350, suffix: "+", label: "Daily Workouts" },
-    { number: 98, suffix: "%", label: "Success Rate" },
-    { number: 120, suffix: "+", label: "Training Machines" },
-
+    { number: 1000, suffix: "+", label: "Active Members", icon: "👥" },
+    { number: 350, suffix: "+", label: "Daily Workouts", icon: "🏋️" },
+    { number: 98, suffix: "%", label: "Success Rate", icon: "🏆" },
+    { number: 120, suffix: "+", label: "Training Machines", icon: "⚙️" },
   ];
 
   const [counts, setCounts] = useState(stats.map(() => 0));
@@ -47,13 +86,11 @@ function StatsPanel() {
 
       const interval = setInterval(() => {
         start += Math.ceil(end / 50);
-
         setCounts((prev) => {
           const updated = [...prev];
           updated[i] = start > end ? end : start;
           return updated;
         });
-
         if (start >= end) clearInterval(interval);
       }, stepTime);
 
@@ -64,23 +101,24 @@ function StatsPanel() {
   }, []);
 
   return (
-    <section className="bg-gray-100 py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">
-        Our Impact In Numbers
-      </h2>
+    <section className="bg-linear-to-r from-black via-gray-900 to-red-950 py-20 px-6">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl text-white font-bold">Our Impact In Numbers</h2>
+        <p className="text-gray-400 mt-2">Real results from real members</p>
+      </div>
 
-      <div className="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {stats.map((item, index) => (
           <div
             key={index}
-            className="bg-white p-10 text-center rounded-xl shadow"
+            className="bg-black/60 border border-red-900/40 p-8 text-center rounded-xl hover:border-red-500/60 transition duration-300 group"
           >
-            <h3 className="text-4xl font-bold text-red-500">
+            <div className="text-3xl mb-3">{item.icon}</div>
+            <h3 className="text-4xl font-bold text-red-500 group-hover:scale-110 transition duration-300">
               {counts[index]}
               {item.suffix}
             </h3>
-
-            <p className="text-gray-600 mt-2">{item.label}</p>
+            <p className="text-gray-300 mt-2 text-sm font-medium">{item.label}</p>
           </div>
         ))}
       </div>
@@ -90,29 +128,30 @@ function StatsPanel() {
 
 function MotivationGrid() {
   const quotes = [
-    "Push harder than yesterday.",
-    "Strength grows with effort.",
-    "Every rep counts.",
-    "Consistency beats motivation.",
-    "Train with purpose.",
-    "Focus on progress.",
+    { text: "Push harder than yesterday.", icon: "🔥" },
+    { text: "Strength grows with effort.", icon: "💪" },
+    { text: "Every rep counts.", icon: "📈" },
+    { text: "Consistency beats motivation.", icon: "⚡" },
+    { text: "Train with purpose.", icon: "🎯" },
+    { text: "Focus on progress.", icon: "🏅" },
   ];
 
   return (
-    <section className="py-16 md:py-20 px-4 sm:px-6 bg-linear-to-b from-gray-50 to-gray-200">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-gray-800">
-        Daily Motivation
-      </h2>
+    <section className="py-20 px-6 bg-linear-to-r from-black via-gray-900 to-red-950">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-white">Daily Motivation</h2>
+        <p className="text-gray-400 mt-2">Words that fuel the grind</p>
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {quotes.map((q, i) => (
           <div
             key={i}
-            className="bg-white p-6 sm:p-8 rounded-xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 border border-gray-100"
+            className="bg-black/60 border border-gray-800 p-8 rounded-xl shadow-md hover:shadow-red-900/30 hover:shadow-xl hover:border-red-700/50 transform hover:-translate-y-2 transition duration-300 group"
           >
-            <p className="text-base sm:text-lg font-medium text-gray-700 text-center">
-              {q}
-            </p>
+            <div className="text-3xl mb-4 group-hover:scale-125 transition duration-300">{q.icon}</div>
+            <p className="text-lg font-semibold text-white">{q.text}</p>
+            <div className="mt-4 w-10 h-0.5 bg-red-500 group-hover:w-full transition-all duration-500" />
           </div>
         ))}
       </div>
@@ -121,21 +160,70 @@ function MotivationGrid() {
 }
 
 function GalleryShowcase() {
-  const items = new Array(8).fill(0);
+  const items = [
+    {
+      img: "1.jpg",
+      label: "Weight Room",
+      gradient: "from-red-900 to-black",
+      icon: "🏋️",
+    },
+    {
+      img: "2.jpg",
+      label: "Cardio Zone",
+      gradient: "from-gray-800 to-red-950",
+      icon: "🏃",
+    },
+    {
+      img: "3.jpg",
+      label: "Yoga Studio",
+      gradient: "from-red-950 to-gray-900",
+      icon: "🧘",
+    },
+    {
+      img: "4.jpg",
+      label: "Boxing Ring",
+      gradient: "from-black to-red-900",
+      icon: "🥊",
+    },
+  ];
 
   return (
-    <section className="bg-gray-900 py-20 px-6">
-      <h2 className="text-3xl text-white font-bold text-center mb-12">
-        Training Atmosphere
-      </h2>
+    <section className="bg-linear-to-r from-black via-gray-900 to-red-950 py-20 px-6">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl text-white font-bold">Training Atmosphere</h2>
+        <p className="text-gray-400 mt-2">State-of-the-art facilities built for champions</p>
+      </div>
 
-      <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        {items.map((_, index) => (
-          <div
-            key={index}
-            className="bg-gray-700 h-48 rounded-lg hover:scale-105 transition"
-          ></div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        {items.map((item, index) => (
+          <div key={index} className="overflow-hidden rounded-xl group relative">
+            {/* Try loading the image; if it fails show the gradient fallback */}
+            <div className={`w-full h-48 sm:h-56 bg-linear-to-br ${item.gradient} flex flex-col items-center justify-center relative`}>
+              <img
+                src={item.img}
+                alt={item.label}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                onError={(e) => { e.target.style.display = "none"; }}
+              />
+              {/* Overlay with label */}
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300" />
+              <div className="relative z-10 text-center">
+                <span className="text-4xl block mb-2">{item.icon}</span>
+                <span className="text-white text-sm font-semibold tracking-wider uppercase bg-black/40 px-3 py-1 rounded-full">
+                  {item.label}
+                </span>
+              </div>
+            </div>
+          </div>
         ))}
+      </div>
+
+      {/* CTA below gallery */}
+      <div className="text-center mt-10">
+        <p className="text-gray-400 mb-4">Want to see it in person?</p>
+        <button className="border border-red-500 text-red-400 px-8 py-2 rounded-lg hover:bg-red-500 hover:text-white transition duration-300">
+          Book a Free Tour
+        </button>
       </div>
     </section>
   );
@@ -148,45 +236,90 @@ function BMICalculator() {
 
   const calculateBMI = () => {
     if (!weight || !height) return;
-
     const h = height / 100;
     const bmi = weight / (h * h);
-
-    setResult(bmi.toFixed(2));
+    setResult(bmi.toFixed(1));
   };
 
+  const getBMICategory = (bmi) => {
+    const val = parseFloat(bmi);
+    if (val < 18.5) return { label: "Underweight", color: "text-blue-400", tip: "Consider a nutrition-focused plan to build healthy mass." };
+    if (val < 25) return { label: "Normal weight", color: "text-green-400", tip: "Great shape! Keep up your balanced routine." };
+    if (val < 30) return { label: "Overweight", color: "text-yellow-400", tip: "A mix of cardio and strength training can help." };
+    return { label: "Obese", color: "text-red-500", tip: "Start with low-impact cardio and consult a trainer." };
+  };
+
+  const category = result ? getBMICategory(result) : null;
+
+  // BMI scale bar percentage (clamped between 10–45 for display)
+  const bmiPercent = result
+    ? Math.min(100, Math.max(0, ((parseFloat(result) - 10) / 35) * 100))
+    : 0;
+
   return (
-    <section className="py-20 px-6 bg-gray-100">
-      <h2 className="text-3xl font-bold text-center mb-10">
-        BMI Calculator
-      </h2>
+    <section className="py-20 px-6 bg-linear-to-r from-black via-gray-900 to-red-950">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl text-white font-bold">BMI Calculator</h2>
+        <p className="text-gray-400 mt-2">Know your body mass index instantly</p>
+      </div>
 
-      <div className="max-w-xl mx-auto bg-white p-10 rounded-xl shadow">
-        <input
-          type="number"
-          placeholder="Weight (kg)"
-          className="border w-full mb-4 p-3 rounded"
-          onChange={(e) => setWeight(e.target.value)}
-        />
-
-        <input
-          type="number"
-          placeholder="Height (cm)"
-          className="border w-full mb-4 p-3 rounded"
-          onChange={(e) => setHeight(e.target.value)}
-        />
+      <div className="max-w-xl mx-auto bg-black/70 border border-gray-800 p-10 rounded-2xl shadow-xl">
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label className="text-gray-400 text-sm mb-1 block">Weight</label>
+            <input
+              type="number"
+              placeholder="kg"
+              className="border border-gray-700 w-full p-3 rounded-lg bg-gray-900 text-white focus:border-red-500 focus:outline-none transition"
+              onChange={(e) => setWeight(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="text-gray-400 text-sm mb-1 block">Height</label>
+            <input
+              type="number"
+              placeholder="cm"
+              className="border border-gray-700 w-full p-3 rounded-lg bg-gray-900 text-white focus:border-red-500 focus:outline-none transition"
+              onChange={(e) => setHeight(e.target.value)}
+            />
+          </div>
+        </div>
 
         <button
           onClick={calculateBMI}
-          className="bg-red-500 text-white px-6 py-3 rounded w-full"
+          className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg w-full font-semibold transition"
         >
-          Calculate
+          Calculate BMI
         </button>
 
-        {result && (
-          <p className="text-center mt-6 text-lg font-semibold">
-            Your BMI: {result}
-          </p>
+        {result && category && (
+          <div className="mt-8">
+            {/* Result display */}
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-gray-400 text-sm">Your BMI</span>
+              <span className={`text-3xl font-bold ${category.color}`}>{result}</span>
+            </div>
+
+            {/* Scale bar */}
+            <div className="w-full h-3 rounded-full bg-linear-to-r from-blue-500  via-yellow-400 to-red-500 mb-2 relative">
+              <div
+                className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-gray-900 rounded-full shadow-lg transition-all duration-500"
+                style={{ left: `calc(${bmiPercent}% - 8px)` }}
+              />
+            </div>
+            <div className="flex justify-between text-xs text-gray-500 mb-4">
+              <span>Underweight</span>
+              <span>Normal</span>
+              <span>Overweight</span>
+              <span>Obese</span>
+            </div>
+
+            {/* Category & tip */}
+            <div className="bg-gray-900 border border-gray-700 rounded-xl p-4">
+              <p className={`font-semibold text-lg ${category.color}`}>{category.label}</p>
+              <p className="text-gray-400 text-sm mt-1">{category.tip}</p>
+            </div>
+          </div>
         )}
       </div>
     </section>
@@ -194,29 +327,57 @@ function BMICalculator() {
 }
 
 function ChallengeBoard() {
-  const challenges = [
-    "50 Pushups Challenge",
-    "5km Run Challenge",
-    "100 Squats Challenge",
-    "7 Day Core Challenge",
+  const workouts = [
+    {
+      title: "Strength Training",
+      desc: "Build muscle and increase overall strength with weight training exercises.",
+      icon: <FaDumbbell />,
+      color: "from-red-900/40 to-black",
+      accent: "text-red-400",
+    },
+    {
+      title: "Cardio Workout",
+      desc: "Improve stamina and burn calories with running, cycling and HIIT sessions.",
+      icon: <FaRunning />,
+      color: "from-orange-900/40 to-black",
+      accent: "text-orange-400",
+    },
+    {
+      title: "Flexibility",
+      desc: "Enhance mobility and balance with stretching and flexibility routines.",
+      icon: <FaSpa />,
+      color: "from-teal-900/40 to-black",
+      accent: "text-teal-400",
+    },
+    {
+      title: "Core Training",
+      desc: "Strengthen your abs and core muscles for better posture and stability.",
+      icon: <FaFire />,
+      color: "from-yellow-900/40 to-black",
+      accent: "text-yellow-400",
+    },
   ];
 
   return (
-    <section className="py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">
-        Weekly Challenges
-      </h2>
+    <section className="py-20 px-6 bg-linear-to-r from-black via-gray-900 to-red-950">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl text-white font-bold">Workout Categories</h2>
+        <p className="text-gray-400 mt-2">Choose your path, own your journey</p>
+      </div>
 
-      <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {challenges.map((c, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        {workouts.map((w, i) => (
           <div
             key={i}
-            className="bg-white border p-8 rounded-xl text-center shadow"
+            className={`bg-linear-to-b ${w.color} border border-gray-800 p-7 rounded-2xl hover:border-red-700/60 hover:-translate-y-2 transition duration-300 text-center group`}
           >
-            <h3 className="font-semibold text-lg mb-4">{c}</h3>
-
-            <button className="bg-black text-white px-6 py-2 rounded">
-              Join
+            <div className={`text-4xl ${w.accent} mb-5 flex justify-center group-hover:scale-125 transition duration-300`}>
+              {w.icon}
+            </div>
+            <h3 className="font-bold text-white text-lg mb-3">{w.title}</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">{w.desc}</p>
+            <button className={`mt-5 text-xs font-semibold ${w.accent} border border-current px-4 py-1.5 rounded-full hover:bg-white/10 transition`}>
+              Explore →
             </button>
           </div>
         ))}
@@ -231,36 +392,50 @@ function FAQSection() {
   const data = [
     {
       q: "How often should I train?",
-      a: "Consistency is key. 4-5 sessions per week is ideal for progress.",
+      a: "Consistency is key. 4–5 sessions per week is ideal for steady progress. Beginners can start with 3 sessions and gradually increase intensity and frequency.",
     },
     {
       q: "Is cardio necessary?",
-      a: "Yes, it improves endurance and heart health.",
+      a: "Yes, cardio improves heart health, endurance, and helps with fat loss. Even 20–30 minutes 3x per week makes a significant difference over time.",
     },
     {
       q: "Do beginners need supplements?",
-      a: "Not necessary. Focus on nutrition and training first.",
+      a: "Not necessary to start. Focus on balanced whole-food nutrition and consistent training first. Protein shakes can help if you struggle to hit daily protein targets.",
+    },
+    {
+      q: "What time of day is best to work out?",
+      a: "The best time is whenever you can stay consistent. Morning workouts boost metabolism for the day; evening workouts often allow peak physical performance.",
+    },
+    {
+      q: "How soon will I see results?",
+      a: "Most people notice strength improvements within 2–3 weeks. Visible body composition changes typically appear after 6–8 weeks of consistent training and proper nutrition.",
     },
   ];
 
   return (
-    <section className="bg-gray-100 py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">
-        Frequently Asked Questions
-      </h2>
+    <section className="bg-linear-to-r from-black via-gray-900 to-red-950 py-20 px-6">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl text-white font-bold">Frequently Asked Questions</h2>
+        <p className="text-gray-400 mt-2">Answers to help you get started with confidence</p>
+      </div>
 
-      <div className="max-w-3xl mx-auto space-y-4">
+      <div className="max-w-3xl mx-auto space-y-3">
         {data.map((item, i) => (
-          <div key={i} className="bg-white p-6 rounded-lg shadow">
+          <div
+            key={i}
+            className="bg-black/60 border border-gray-800 rounded-xl overflow-hidden hover:border-red-800/50 transition duration-300"
+          >
             <button
               onClick={() => setOpen(open === i ? null : i)}
-              className="font-semibold text-left w-full"
+              className="font-semibold text-left w-full px-6 py-4 text-white flex items-center justify-between gap-4"
             >
-              {item.q}
+              <span>{item.q}</span>
+              <span className={`text-red-500 text-xl transition-transform duration-300 ${open === i ? "rotate-45" : ""}`}>+</span>
             </button>
-
             {open === i && (
-              <p className="text-gray-600 mt-3">{item.a}</p>
+              <div className="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-gray-800 pt-4">
+                {item.a}
+              </div>
             )}
           </div>
         ))}
@@ -270,24 +445,56 @@ function FAQSection() {
 }
 
 function CommunityWall() {
-  const posts = new Array(6).fill(0);
+  const posts = [
+    {
+      name: "Raj K.",
+      initials: "RK",
+      text: "Completed his first 100 pushups challenge this week and shared his progress with the community.",
+      tag: "#StrengthGoals",
+      days: "3 days streak",
+    },
+    {
+      name: "Priya S.",
+      initials: "PS",
+      text: "Improved her running stamina and finished a 5km run after weeks of consistent training.",
+      tag: "#FitnessJourney",
+      days: "7 days streak",
+    },
+    {
+      name: "Amit V.",
+      initials: "AV",
+      text: "Shared his transformation story and motivated others to stay disciplined with their workouts.",
+      tag: "#GymCommunity",
+      days: "14 days streak",
+    },
+  ];
 
   return (
-    <section className="py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">
-        Community Highlights
-      </h2>
+    <section className="py-20 px-6 bg-linear-to-r from-black via-gray-900 to-red-950">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-white">Community Highlights</h2>
+        <p className="text-gray-400 mt-2">Real people, real results</p>
+      </div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {posts.map((_, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {posts.map((post, i) => (
           <div
             key={i}
-            className="bg-gray-100 p-8 rounded-xl shadow"
+            className="bg-black/60 border border-gray-800 p-7 rounded-2xl hover:border-red-700/50 hover:-translate-y-1 transition duration-300"
           >
-            <p className="text-gray-600">
-              Member shared their workout progress and inspired others to stay
-              consistent.
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 rounded-full bg-red-900 flex items-center justify-center text-white font-bold text-sm flex-shrink-2">
+                {post.initials}
+              </div>
+              <div>
+                <p className="text-white font-semibold text-sm">{post.name}</p>
+                <p className="text-red-400 text-xs">{post.days} 🔥</p>
+              </div>
+            </div>
+            <p className="text-gray-300 leading-relaxed text-sm">{post.text}</p>
+            <div className="mt-4 inline-block text-xs font-semibold text-red-400 bg-red-900/20 border border-red-900/30 px-3 py-1 rounded-full">
+              {post.tag}
+            </div>
           </div>
         ))}
       </div>
@@ -297,24 +504,76 @@ function CommunityWall() {
 
 function AppDownload() {
   return (
-    <section className="bg-black text-white py-20 px-6 text-center">
-      <h2 className="text-3xl font-bold mb-4">
-        Train Anywhere Anytime
-      </h2>
+    <section className="bg-linear-to-r from-black via-gray-900 to-red-950 text-white py-20 px-6 border-t border-gray-800">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
 
-      <p className="text-gray-300 mb-8">
-        Track workouts, monitor progress and stay motivated with our mobile
-        experience.
-      </p>
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-xl font-semibold mb-6 pb-3 border-b border-gray-800">Quick Links</h3>
+          <div className="flex flex-col gap-3 text-gray-300">
+            {[
+              { to: "/about-us", label: "About Us" },
+              { to: "/programs", label: "Programs" },
+              { to: "/membership", label: "Membership" },
+              { to: "/trainers", label: "Trainers" },
+              { to: "/blog", label: "Blog" },
+              { to: "/contact", label: "Contact" },
+            ].map((link, i) => (
+              <Link
+                key={i}
+                className="hover:text-red-400 transition flex items-center gap-2 group"
+                to={link.to}
+              >
+                <span className="text-red-800 group-hover:text-red-400 transition text-xs">→</span>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
 
-      <div className="flex justify-center gap-6">
-        <button className="bg-red-500 px-6 py-3 rounded">
-          Android
-        </button>
+        {/* Social Media */}
+        <div>
+          <h3 className="text-xl font-semibold mb-6 pb-3 border-b border-gray-800">Follow Us</h3>
+          <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+            Stay connected with us on social media for daily fitness tips, workout inspiration and latest updates.
+          </p>
 
-        <button className="border border-white px-6 py-3 rounded">
-          iOS
-        </button>
+          <div className="flex justify-center md:justify-start gap-4 mb-8">
+            {[
+              {
+                icon: <FaInstagram />,
+                label: "Instagram",
+                link: "https://www.instagram.com/webdaddy_official/",
+                color: "hover:text-pink-400 hover:border-pink-700"
+              },
+              {
+                icon: <FaWhatsapp />,
+                label: "WhatsApp",
+                link: "https://wa.me/919999999999",
+                color: "hover:text-green-400 hover:border-green-700"
+              },
+              {
+                icon: <FaLinkedin />,
+                label: "LinkedIn",
+                link: "https://www.linkedin.com/in/tanveer-singh-ab008637b/",
+                color: "hover:text-blue-400 hover:border-blue-700"
+              },
+            ].map((s, i) => (
+              <a
+                key={i}
+                href={s.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-12 h-12 rounded-xl border border-gray-700 flex items-center justify-center text-xl text-gray-400 transition duration-300 ${s.color}`}
+                aria-label={s.label}
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
@@ -322,8 +581,19 @@ function AppDownload() {
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white text-center py-10">
-      <p>© 2026 Fitness World</p>
+    <footer className="bg-black border-t border-gray-900 text-gray-400 py-8 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <span className="text-red-500 font-black text-xl">FW</span>
+          <span className="text-white font-bold text-lg">Fitness World</span>
+        </div>
+        <p className="text-sm text-gray-500">© 2026 Fitness World. All rights reserved.</p>
+        <div className="flex gap-6 text-sm">
+          <a href="#" className="hover:text-red-400 transition">Privacy</a>
+          <a href="#" className="hover:text-red-400 transition">Terms</a>
+          <a href="#" className="hover:text-red-400 transition">Support</a>
+        </div>
+      </div>
     </footer>
   );
 }
@@ -344,8 +614,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-
-
