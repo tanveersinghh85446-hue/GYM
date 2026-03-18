@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaDumbbell, FaRunning, FaSpa, FaFire } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { FaInstagram, FaWhatsapp, FaLinkedin, FaApple, FaGooglePlay } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaLinkedin} from "react-icons/fa";
 
 
 function HeroBanner() {
@@ -69,10 +69,10 @@ function HeroBanner() {
 
 function StatsPanel() {
   const stats = [
-    { number: 1000, suffix: "+", label: "Active Members", icon: "👥" },
-    { number: 350, suffix: "+", label: "Daily Workouts", icon: "🏋️" },
-    { number: 98, suffix: "%", label: "Success Rate", icon: "🏆" },
-    { number: 120, suffix: "+", label: "Training Machines", icon: "⚙️" },
+    { number: 1000, suffix: "+", label: "Active Members", },
+    { number: 350, suffix: "+", label: "Daily Workouts", },
+    { number: 98, suffix: "%", label: "Success Rate", },
+    { number: 120, suffix: "+", label: "Training Machines", },
   ];
 
   const [counts, setCounts] = useState(stats.map(() => 0));
@@ -128,12 +128,12 @@ function StatsPanel() {
 
 function MotivationGrid() {
   const quotes = [
-    { text: "Push harder than yesterday.", icon: "🔥" },
-    { text: "Strength grows with effort.", icon: "💪" },
-    { text: "Every rep counts.", icon: "📈" },
-    { text: "Consistency beats motivation.", icon: "⚡" },
-    { text: "Train with purpose.", icon: "🎯" },
-    { text: "Focus on progress.", icon: "🏅" },
+    { text: "Push harder than yesterday.", },
+    { text: "Strength grows with effort.", },
+    { text: "Every rep counts.", },
+    { text: "Consistency beats motivation.", },
+    { text: "Train with purpose.", },
+    { text: "Focus on progress.", },
   ];
 
   return (
@@ -165,25 +165,21 @@ function GalleryShowcase() {
       img: "1.jpg",
       label: "Weight Room",
       gradient: "from-red-900 to-black",
-      icon: "🏋️",
     },
     {
       img: "2.jpg",
       label: "Cardio Zone",
       gradient: "from-gray-800 to-red-950",
-      icon: "🏃",
     },
     {
       img: "3.jpg",
       label: "Yoga Studio",
       gradient: "from-red-950 to-gray-900",
-      icon: "🧘",
     },
     {
       img: "4.jpg",
       label: "Boxing Ring",
       gradient: "from-black to-red-900",
-      icon: "🥊",
     },
   ];
 
@@ -488,7 +484,7 @@ function CommunityWall() {
               </div>
               <div>
                 <p className="text-white font-semibold text-sm">{post.name}</p>
-                <p className="text-red-400 text-xs">{post.days} 🔥</p>
+                <p className="text-red-400 text-xs">{post.days}</p>
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed text-sm">{post.text}</p>

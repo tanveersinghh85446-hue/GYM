@@ -64,7 +64,6 @@ function Timeline() {
       year: "2016",
       title: "The Beginning",
       desc: "Our gym started as a small training space with big dreams and a passionate core team of 3 trainers.",
-      icon: "🏗️",
       color: "from-gray-800 to-gray-900",
       accent: "border-gray-500",
     },
@@ -73,7 +72,6 @@ function Timeline() {
       year: "2019",
       title: "Growing Community",
       desc: "Hundreds of members joined our fitness journey. We expanded to a larger facility and added group classes.",
-      icon: "👥",
       color: "from-red-950 to-gray-900",
       accent: "border-red-700",
     },
@@ -82,7 +80,6 @@ function Timeline() {
       year: "2022",
       title: "Professional Trainers",
       desc: "We built a team of 30+ certified coaches and introduced specialized programs for every fitness level.",
-      icon: "🏅",
       color: "from-red-900 to-gray-950",
       accent: "border-red-500",
     },
@@ -91,7 +88,6 @@ function Timeline() {
       year: "2025",
       title: "Elite Fitness Center",
       desc: "Now one of the fastest growing gyms in the region, with premium equipment and 4 locations citywide.",
-      icon: "🏆",
       color: "from-red-800 to-red-950",
       accent: "border-red-400",
     },
@@ -166,25 +162,21 @@ function Highlights() {
     {
       label: "Elite Trainers",
       desc: "Certified coaches with proven track records",
-      icon: "🎖️",
       stat: "50+ Coaches",
     },
     {
       label: "Premium Equipment",
       desc: "Latest machines from top fitness brands",
-      icon: "⚙️",
       stat: "120+ Machines",
     },
     {
       label: "Personalized Plans",
       desc: "Custom programs built around your goals",
-      icon: "📋",
       stat: "100% Tailored",
     },
     {
       label: "Strong Community",
       desc: "A supportive network of 1000+ members",
-      icon: "🤝",
       stat: "1000+ Members",
     },
   ];
@@ -218,9 +210,9 @@ function Highlights() {
       {/* Values strip */}
       <div className="max-w-6xl mx-auto mt-16 px-6 grid md:grid-cols-3 gap-6">
         {[
-          { label: "Discipline", desc: "Every session, every rep — no shortcuts.", icon: "⚡" },
-          { label: "Community", desc: "We grow stronger together as one team.", icon: "🔥" },
-          { label: "Results", desc: "Data-driven coaching for real outcomes.", icon: "📈" },
+          { label: "Discipline", desc: "Every session, every rep — no shortcuts." },
+          { label: "Community", desc: "We grow stronger together as one team."},
+          { label: "Results", desc: "Data-driven coaching for real outcomes."},
         ].map((v, i) => (
           <div
             key={i}

@@ -8,7 +8,6 @@ const posts = [
     category: "Workout",
     readTime: "5 min read",
     date: "Mar 10, 2026",
-    icon: "🏋️",
     gradient: "from-red-900 to-gray-900",
   },
   {
@@ -18,7 +17,6 @@ const posts = [
     category: "Weight Loss",
     readTime: "7 min read",
     date: "Mar 6, 2026",
-    icon: "🔥",
     gradient: "from-orange-900 to-gray-900",
   },
   {
@@ -28,7 +26,6 @@ const posts = [
     category: "Nutrition",
     readTime: "6 min read",
     date: "Feb 28, 2026",
-    icon: "🥩",
     gradient: "from-green-900 to-gray-900",
   },
   {
@@ -38,7 +35,6 @@ const posts = [
     category: "Workout",
     readTime: "8 min read",
     date: "Feb 21, 2026",
-    icon: "💪",
     gradient: "from-red-900 to-gray-900",
   },
   {
@@ -48,7 +44,6 @@ const posts = [
     category: "Fitness",
     readTime: "6 min read",
     date: "Feb 14, 2026",
-    icon: "⚡",
     gradient: "from-blue-900 to-gray-900",
   },
   {
@@ -58,7 +53,6 @@ const posts = [
     category: "Beginner",
     readTime: "4 min read",
     date: "Feb 7, 2026",
-    icon: "🎯",
     gradient: "from-purple-900 to-gray-900",
   },
 ];

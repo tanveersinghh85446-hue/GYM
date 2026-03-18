@@ -14,7 +14,6 @@ const plans = [
             { text: "Diet Plan", included: false },
             { text: "Priority Support", included: false },
         ],
-        icon: "🏃",
         gradient: "from-gray-900 to-black",
         accent: "border-gray-700",
         btnStyle: "border border-gray-600 text-gray-300 hover:border-red-500 hover:text-red-400",
@@ -34,7 +33,6 @@ const plans = [
             { text: "Diet Plan", included: true },
             { text: "Priority Support", included: false },
         ],
-        icon: "🏋️",
         gradient: "from-red-950 to-black",
         accent: "border-red-600",
         btnStyle: "bg-red-500 hover:bg-red-600 text-white shadow-lg shadow-red-900/40",
@@ -54,7 +52,6 @@ const plans = [
             { text: "Diet Plan", included: true },
             { text: "Priority Support", included: true },
         ],
-        icon: "🏆",
         gradient: "from-yellow-950 to-black",
         accent: "border-yellow-700",
         btnStyle: "border border-yellow-700 text-yellow-400 hover:bg-yellow-500 hover:text-black",
@@ -181,20 +178,6 @@ function Membership() {
                     ))}
                 </div>
 
-                {/* Guarantee strip */}
-                <div className="max-w-6xl mx-auto mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 text-center">
-                    {[
-                        { icon: "🔒", text: "No hidden charges" },
-                        { icon: "↩️", text: "Cancel anytime" },
-                        { icon: "💬", text: "24/7 support" },
-                        { icon: "⚡", text: "Instant activation" },
-                    ].map((g, i) => (
-                        <div key={i} className="flex items-center gap-2 text-gray-500 text-sm">
-                            <span>{g.icon}</span>
-                            <span>{g.text}</span>
-                        </div>
-                    ))}
-                </div>
             </section>
         </div>
     );

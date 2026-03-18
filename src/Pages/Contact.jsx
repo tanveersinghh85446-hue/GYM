@@ -22,10 +22,10 @@ function Contact() {
   };
 
   const info = [
-    { icon: "📍", label: "Address", val: "12 Fitness Lane, New Delhi, India" },
-    { icon: "📞", label: "Phone", val: "+91 98765 43210" },
-    { icon: "✉️", label: "Email", val: "hello@fitnessworld.in" },
-    { icon: "🕐", label: "Hours", val: "Mon–Sat: 5am – 10pm" },
+    { label: "Address", val: "12 Fitness Lane, New Delhi, India" },
+    { label: "Phone", val: "+91 98765 43210" },
+    { label: "Email", val: "hello@fitnessworld.in" },
+    { label: "Hours", val: "Mon–Sat: 5am – 10pm" },
   ];
 
   return (
