@@ -211,8 +211,8 @@ function Highlights() {
       <div className="max-w-6xl mx-auto mt-16 px-6 grid md:grid-cols-3 gap-6">
         {[
           { label: "Discipline", desc: "Every session, every rep — no shortcuts." },
-          { label: "Community", desc: "We grow stronger together as one team."},
-          { label: "Results", desc: "Data-driven coaching for real outcomes."},
+          { label: "Community", desc: "We grow stronger together as one team." },
+          { label: "Results", desc: "Data-driven coaching for real outcomes." },
         ].map((v, i) => (
           <div
             key={i}
@@ -226,6 +226,20 @@ function Highlights() {
           </div>
         ))}
       </div>
+      <footer className="bg-black border-t border-gray-900 text-gray-400 py-8 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-red-500 font-black text-xl">FW</span>
+            <span className="text-white font-bold text-lg">Fitness World</span>
+          </div>
+          <p className="text-sm text-gray-500">© 2026 Fitness World. All rights reserved.</p>
+          <div className="flex gap-6 text-sm">
+            <a href="#" className="hover:text-red-400 transition">Privacy</a>
+            <a href="#" className="hover:text-red-400 transition">Terms</a>
+            <a href="#" className="hover:text-red-400 transition">Support</a>
+          </div>
+        </div>
+      </footer>
     </section>
   );
 }

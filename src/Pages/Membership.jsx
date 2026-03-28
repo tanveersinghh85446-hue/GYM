@@ -38,7 +38,7 @@ const plans = [
         btnStyle: "bg-red-500 hover:bg-red-600 text-white shadow-lg shadow-red-900/40",
         badge: "Most Popular",
     },
-    
+
     {
         name: "Elite",
         price: "₹2,999",
@@ -179,6 +179,20 @@ function Membership() {
                 </div>
 
             </section>
+            <footer className="bg-black border-t border-gray-900 text-gray-400 py-8 px-6">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-2">
+                        <span className="text-red-500 font-black text-xl">FW</span>
+                        <span className="text-white font-bold text-lg">Fitness World</span>
+                    </div>
+                    <p className="text-sm text-gray-500">© 2026 Fitness World. All rights reserved.</p>
+                    <div className="flex gap-6 text-sm">
+                        <a href="#" className="hover:text-red-400 transition">Privacy</a>
+                        <a href="#" className="hover:text-red-400 transition">Terms</a>
+                        <a href="#" className="hover:text-red-400 transition">Support</a>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

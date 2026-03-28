@@ -5,7 +5,6 @@ const programs = [
         title: "Strength Training",
         desc: "Build muscle and increase strength with progressive overload techniques.",
         video: "Strength Training.mp4",
-        gradient: "from-red-900 via-red-950 to-black",
         accent: "border-red-600/50",
         tag: "text-red-400 bg-red-950/60 border-red-800/50",
         duration: "45–60 min",
@@ -17,7 +16,6 @@ const programs = [
         title: "Weight Loss",
         desc: "Burn fat efficiently with high-intensity interval workouts and metabolic circuits.",
         video: "Weight Loss.mp4",
-        gradient: "from-orange-900 via-orange-950 to-black",
         accent: "border-orange-600/50",
         tag: "text-orange-400 bg-orange-950/60 border-orange-800/50",
         duration: "30–45 min",
@@ -29,19 +27,17 @@ const programs = [
         title: "Yoga Training",
         desc: "Improve flexibility, balance and mental clarity with guided yoga sessions.",
         video: "Yoga Training.mp4",
-        gradient: "from-teal-900 via-teal-950 to-black",
         accent: "border-teal-600/50",
         tag: "text-teal-400 bg-teal-950/60 border-teal-800/50",
         duration: "40–50 min",
         level: "Beginner",
         highlight: "Mind & Body",
     },
-    
+
     {
         title: "HIIT Training",
         desc: "Max-intensity bursts designed to spike stamina, endurance and caloric burn.",
         video: "HIIT Training.mp4",
-        gradient: "from-yellow-900 via-yellow-950 to-black",
         accent: "border-yellow-600/50",
         tag: "text-yellow-400 bg-yellow-950/60 border-yellow-800/50",
         duration: "20–30 min",
@@ -195,6 +191,20 @@ function Programs() {
                     </p>
                 </div>
             </section>
+            <footer className="bg-black border-t border-gray-900 text-gray-400 py-8 px-6">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-2">
+                        <span className="text-red-500 font-black text-xl">FW</span>
+                        <span className="text-white font-bold text-lg">Fitness World</span>
+                    </div>
+                    <p className="text-sm text-gray-500">© 2026 Fitness World. All rights reserved.</p>
+                    <div className="flex gap-6 text-sm">
+                        <a href="#" className="hover:text-red-400 transition">Privacy</a>
+                        <a href="#" className="hover:text-red-400 transition">Terms</a>
+                        <a href="#" className="hover:text-red-400 transition">Support</a>
+                    </div>
+                </div>
+            </footer>
 
         </div>
     );

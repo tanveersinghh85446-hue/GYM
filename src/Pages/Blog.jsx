@@ -119,8 +119,8 @@ function BlogCategories({ active, setActive }) {
             key={cat}
             onClick={() => setActive(cat)}
             className={`px-5 py-2 rounded-xl text-sm font-semibold border transition duration-200 ${active === cat
-                ? "bg-red-500 text-white border-red-500 shadow-lg shadow-red-900/30"
-                : "bg-gray-900 text-gray-400 border-gray-800 hover:border-red-700 hover:text-white"
+              ? "bg-red-500 text-white border-red-500 shadow-lg shadow-red-900/30"
+              : "bg-gray-900 text-gray-400 border-gray-800 hover:border-red-700 hover:text-white"
               }`}
           >
             {cat}
@@ -198,16 +198,27 @@ function BlogPosts({ active }) {
                     {post.desc}
                   </p>
 
-                  <button className="mt-5 flex items-center gap-2 text-red-500 hover:text-red-400 text-sm font-semibold transition group/btn">
-                    Read More
-                    <span className="group-hover/btn:translate-x-1 transition duration-200">→</span>
-                  </button>
+                  
                 </div>
               </article>
             ))}
           </div>
         )}
       </div>
+      <footer className="bg-black border-t border-gray-900 text-gray-400 py-8 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-red-500 font-black text-xl">FW</span>
+            <span className="text-white font-bold text-lg">Fitness World</span>
+          </div>
+          <p className="text-sm text-gray-500">© 2026 Fitness World. All rights reserved.</p>
+          <div className="flex gap-6 text-sm">
+            <a href="#" className="hover:text-red-400 transition">Privacy</a>
+            <a href="#" className="hover:text-red-400 transition">Terms</a>
+            <a href="#" className="hover:text-red-400 transition">Support</a>
+          </div>
+        </div>
+      </footer>
     </section>
   );
 }

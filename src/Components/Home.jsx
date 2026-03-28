@@ -1,21 +1,35 @@
 import { useState, useEffect } from "react";
 import { FaDumbbell, FaRunning, FaSpa, FaFire } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { FaInstagram, FaWhatsapp, FaLinkedin} from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 
 function HeroBanner() {
   return (
-    <section className="min-h-screen bg-linear-to-br from-black via-gray-900 to-red-950 text-white flex items-center justify-center px-6 relative overflow-hidden">
+    <section className="min-h-screen text-white flex items-center justify-center px-6 relative overflow-hidden">
+
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      >
+        <source src="BG.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
 
       {/* Background decorative rings */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-220 h-220 rounded-full border border-red-400 opacity-20"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-170 h-170 rounded-full border border-red-400 opacity-15"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-120 h-120 rounded-full border border-red-400 opacity-10"></div>
       </div>
 
-      <div className="text-center max-w-3xl relative z-10">
+      <div className="text-center max-w-3xl relative z-20">
         <span className="inline-block text-red-400 text-sm font-semibold tracking-widest uppercase mb-4 border border-red-800 px-4 py-1 rounded-full">
           No Pain, No Gain
         </span>
@@ -29,9 +43,7 @@ function HeroBanner() {
           Your fitness journey begins with a single powerful step.
         </p>
 
-        {/* Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-
           <Link
             to="/Contact"
             className="bg-red-500 px-10 py-3 rounded-lg hover:bg-red-600 transition font-semibold text-lg shadow-lg shadow-red-900/40 text-center"
@@ -45,7 +57,6 @@ function HeroBanner() {
           >
             Explore Programs
           </Link>
-
         </div>
 
         {/* Hero quick stats */}
@@ -163,23 +174,15 @@ function GalleryShowcase() {
   const items = [
     {
       img: "1.jpg",
-      label: "Weight Room",
-      gradient: "from-red-900 to-black",
     },
     {
       img: "2.jpg",
-      label: "Cardio Zone",
-      gradient: "from-gray-800 to-red-950",
     },
     {
       img: "3.jpg",
-      label: "Yoga Studio",
-      gradient: "from-red-950 to-gray-900",
     },
     {
       img: "4.jpg",
-      label: "Boxing Ring",
-      gradient: "from-black to-red-900",
     },
   ];
 
@@ -372,9 +375,7 @@ function ChallengeBoard() {
             </div>
             <h3 className="font-bold text-white text-lg mb-3">{w.title}</h3>
             <p className="text-gray-400 text-sm leading-relaxed">{w.desc}</p>
-            <button className={`mt-5 text-xs font-semibold ${w.accent} border border-current px-4 py-1.5 rounded-full hover:bg-white/10 transition`}>
-              Explore →
-            </button>
+
           </div>
         ))}
       </div>
@@ -465,37 +466,6 @@ function CommunityWall() {
     },
   ];
 
-  return (
-    <section className="py-20 px-6 bg-linear-to-r from-black via-gray-900 to-red-950">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">Community Highlights</h2>
-        <p className="text-gray-400 mt-2">Real people, real results</p>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {posts.map((post, i) => (
-          <div
-            key={i}
-            className="bg-black/60 border border-gray-800 p-7 rounded-2xl hover:border-red-700/50 hover:-translate-y-1 transition duration-300"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-11 h-11 rounded-full bg-red-900 flex items-center justify-center text-white font-bold text-sm flex-shrink-2">
-                {post.initials}
-              </div>
-              <div>
-                <p className="text-white font-semibold text-sm">{post.name}</p>
-                <p className="text-red-400 text-xs">{post.days}</p>
-              </div>
-            </div>
-            <p className="text-gray-300 leading-relaxed text-sm">{post.text}</p>
-            <div className="mt-4 inline-block text-xs font-semibold text-red-400 bg-red-900/20 border border-red-900/30 px-3 py-1 rounded-full">
-              {post.tag}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
 }
 
 function AppDownload() {

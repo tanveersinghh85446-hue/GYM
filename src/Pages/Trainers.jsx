@@ -11,9 +11,6 @@ function Trainers() {
       accent: "border-red-700/50",
       tag: "text-red-400 bg-red-950/50 border-red-900/40",
       stats: [
-        { label: "Clients", val: "120+" },
-        { label: "Programs", val: "15" },
-        { label: "Rating", val: "4.9★" },
       ],
     },
 
@@ -27,11 +24,6 @@ function Trainers() {
       gradient: "from-orange-900 to-gray-900",
       accent: "border-orange-700/50",
       tag: "text-orange-400 bg-orange-950/50 border-orange-900/40",
-      stats: [
-        { label: "Clients", val: "95+" },
-        { label: "Programs", val: "10" },
-        { label: "Rating", val: "4.8★" },
-      ],
     },
 
     {
@@ -44,11 +36,6 @@ function Trainers() {
       gradient: "from-blue-900 to-gray-900",
       accent: "border-blue-700/50",
       tag: "text-blue-400 bg-blue-950/50 border-blue-900/40",
-      stats: [
-        { label: "Clients", val: "80+" },
-        { label: "Programs", val: "12" },
-        { label: "Rating", val: "4.9★" },
-      ],
     },
   ];
 
@@ -123,20 +110,9 @@ function Trainers() {
                   {t.bio}
                 </p>
 
-                {/* Stats row */}
-                <div className="mt-5 grid grid-cols-3 gap-2 border-t border-gray-800 pt-5">
-                  {t.stats.map((s, j) => (
-                    <div key={j} className="text-center">
-                      <p className="text-white font-bold text-sm">{s.val}</p>
-                      <p className="text-gray-600 text-xs mt-0.5">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
 
-                {/* CTA */}
-                <button className="mt-5 w-full py-2.5 rounded-xl border border-gray-700 text-gray-300 text-sm font-semibold hover:border-red-600 hover:text-red-400 hover:bg-red-950/20 transition duration-200">
-                  Book a Session
-                </button>
+
+
               </div>
             </div>
           ))}
@@ -153,9 +129,23 @@ function Trainers() {
           <p className="text-gray-400 mb-8 text-sm leading-relaxed max-w-lg mx-auto">
             Every trainer offers a free consultation session. Tell us your goals and we'll match you with the right coach.
           </p>
-          
+
         </div>
       </section>
+      <footer className="bg-black border-t border-gray-900 text-gray-400 py-8 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-red-500 font-black text-xl">FW</span>
+            <span className="text-white font-bold text-lg">Fitness World</span>
+          </div>
+          <p className="text-sm text-gray-500">© 2026 Fitness World. All rights reserved.</p>
+          <div className="flex gap-6 text-sm">
+            <a href="#" className="hover:text-red-400 transition">Privacy</a>
+            <a href="#" className="hover:text-red-400 transition">Terms</a>
+            <a href="#" className="hover:text-red-400 transition">Support</a>
+          </div>
+        </div>
+      </footer>
 
     </div>
   );
