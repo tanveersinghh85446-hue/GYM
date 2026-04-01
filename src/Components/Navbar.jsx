@@ -5,7 +5,6 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/about-us", label: "About Us" },
   { to: "/programs", label: "Programs" },
-  { to: "/membership", label: "Membership" },
   { to: "/trainers", label: "Trainers" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
